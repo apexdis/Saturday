@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Model.ModelProduct;
 
@@ -14,6 +15,13 @@ namespace Services.ServiceProduct
             products = new List<Product>();
         }
 
+        /// <summary>
+        /// Add Product Details
+        /// </summary>
+        /// <param name="productId">Enter Product ID (String)</param>
+        /// <param name="productName">Enter Product Name (String)</param>
+        /// <param name="productCost">Enter Product Cost (Decimal Value)</param>
+        /// <param name="productPrice">Enter Product Price (Decimal Value)</param>
         public void Add(string productId, string productName, decimal productCost, decimal productPrice)
         {
             try
@@ -42,12 +50,19 @@ namespace Services.ServiceProduct
             throw new NotImplementedException();
         }
 
-        public void List()
+        public List<Product> List()
         {
-            throw new NotImplementedException();
+            try
+            {
+                return products.ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
-        public void Search(string productId)
+        public Product Search(string productId)
         {
             throw new NotImplementedException();
         }
@@ -56,5 +71,6 @@ namespace Services.ServiceProduct
         {
             throw new NotImplementedException();
         }
+        
     }
 }
