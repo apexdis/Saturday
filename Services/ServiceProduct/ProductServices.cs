@@ -64,7 +64,26 @@ namespace Services.ServiceProduct
 
         public Product Search(string productId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                return List().Where(x => x.ProductId == productId).FirstOrDefault(); ;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
+        public List<Product> SearchByProductName(string productName)
+        {
+            try
+            {
+                return List().Where(x => x.ProductName.StartsWith(productName.ToUpper())).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
         }
 
         public void Update(string productId, string productName, decimal productCost, decimal ProductPrice)
